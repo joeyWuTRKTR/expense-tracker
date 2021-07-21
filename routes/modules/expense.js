@@ -1,5 +1,5 @@
 const express = require('express')
-const Expense = require('../../models/expenses')
+const Expense = require('../../models/record')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
