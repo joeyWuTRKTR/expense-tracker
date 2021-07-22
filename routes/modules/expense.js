@@ -1,17 +1,26 @@
 const express = require('express')
-const Expense = require('../../models/record')
+const Record = require('../../models/record')
 const router = express.Router()
 
+// Create - lead to create page
 router.get('/new', (req, res) => {
-  const { name, categoru, amount } = req.body
-  return Expense.find()
+  return Record.find()
     .lean()
-    .then(expenses => res.render('new', { expenses }))
+    .then(() => res.render('new'))
+    .catch(err => console.log(err))
+})
+
+// Create - lead to index page
+router.post('/', (req, res) => {
+  const { name, category, date, amount } = req.body
+  console.log(`name: ${name}, category: ${category}, amount: ${amount}`)
+  return Record.create({ name, category, date, amount })
+    .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
 router.get('/edit', (req, res) => {
-  return Expense.find()
+  return Record.find()
     .lean()
     .then(expenses => res.render('edit', { expenses }))
     .catch(err => console.log(err))
