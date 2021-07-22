@@ -3,25 +3,40 @@
 </nav>
 
 <form action="/expense" method="POST">
-  <div class="form-group">
-    <p>*必填欄位<h3>請輸入你的支出</h3></p>
-  </div>
-  <div class="form-group">
-    <label for="name">名稱*:</label>
-    <input type="text" id="name" name="name">
-  </div>
-  <div class="form-group">
-    <label for="date">日期*:</label>
-    <input type="date" id="date" name="date">
-  </div>
-  <div class="form-group">
-    <label for="category">類別*:</label>
-    <input type="text" id="category" name="category">
-  </div>
-  <div class="form-group">
-    <label for="amount">金額*:</label>
-    <input type="text" id="amount" name="amount">
-  </div>
+  <div class="container d-flex flex-column justify-content-center">
+    <div class="form-group row">
+      <p class="col-md-2">*必填欄位</p>
+      <h3 class="col-md-4 text-left">請輸入你的支出</h3>
+    </div>
 
-  <button type="submit" class="btn btn-success">新增支出</button>
+    <div class="form-group row">
+      <label class="col-md-2" for="name">名稱*:</label>
+      <input class="form-control col-md-4 text-left" type="text" id="name" name="name">
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-2" for="date">日期*:</label>
+      <input class="form-control col-md-4 text-left" type="date" id="date" name="date">
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-2" for="category">類別*:</label>
+      <select class="form-control col-md-4 text-left" name="category" id="category" onchange="submit()">
+        <option value="">選擇類別</option>
+        {{#each categories}}
+          <option value="{{ this.categoryName }}">{{ this.categoryName }}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-md-2" for="amount">金額*:</label>
+      <input class="form-control col-md-4 text-left" type="number" id="amount" name="amount">
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-2"></div>
+      <button type="submit" class="btn btn-success col-md-4 text-center">新增支出</button>
+    </div>
+  </div>
 </form>
