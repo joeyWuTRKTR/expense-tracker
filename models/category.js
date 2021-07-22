@@ -1,16 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-
 const categorySchema = new Schema({
-  name: {
+  categoryName: {
     type: String,
     required: true
   },
-  name_cn: {
+  categoryEngName: {
     type: String,
     required: true
   },
-  iconClass: {
+  categoryIcon: {
     type: String,
     required: true
   }

@@ -3,6 +3,7 @@ const Expense = require('../../models/record')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
+  const { name, categoru, amount } = req.body
   return Expense.find()
     .lean()
     .then(expenses => res.render('new', { expenses }))

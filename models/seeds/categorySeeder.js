@@ -1,18 +1,39 @@
-const categoryData = require('./seed.json') // require json
-const categoryList = categoryData.categorySeeds // narrow down a object x array
-const Category = require('../category')  // import schema from model
+const Category = require('../category')
+const db = require('../../config/mongoose')
 
-const db = require('../../config/mongoose') // include mongodb
+const categoryData = [
+  {
+    categoryName: '家居物業',
+    categoryEngName: 'home',
+    categoryIcon: 'fas fa-home'
+  },
+  {
+    categoryName: '交通出行',
+    categoryEngName: 'transportation',
+    categoryIcon: 'fas fa-shuttle-van'
+  },
+  {
+    categoryName: '休閒娛樂',
+    categoryEngName: 'entertainment',
+    categoryIcon: 'fas fa-grin-beam'
+  },
+  {
+    categoryName: '餐飲食品',
+    categoryEngName: 'food',
+    categoryIcon: 'fas fa-utensils'
+  },
+  {
+    categoryName: '其他',
+    categoryEngName: 'others',
+    categoryIcon: 'fas fa-pen'
+  }
+]
 
-
-// import data into mongodb
 db.once('open', () => {
-  categoryList.forEach(category => {
-    Category.create({
-      name: category.name,
-      name_cn: category.name_cn,
-      iconClass: category.iconClass,
+  Category.create(categoryData)
+    .then(() => {
+      console.log('Add category seeder!')
+      return db.close()
     })
-  })
-  console.log('Category seeder finished!')
+    .catch(err => console.error(err))
 })

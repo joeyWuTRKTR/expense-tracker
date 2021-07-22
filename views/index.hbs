@@ -1,18 +1,36 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="/">家庭記帳本</a>
 </nav>
-<h3>總金額</h3>
-<select name="" id="">
-  <option value="">abc</option>
-  <option value="">123</option>
-</select>
+<div class="container d-flex flex-column justify-content-center">
 
-<ul class="list-group">
-  <li class="list-group-item">吃飯
-    <a href="./expense/edit" class="btn">修改</a>
-    <a href="" class="btn">刪除</a>
-  </li>
-  <li class="list-group-item">睡覺</li>
-</ul>
+  <select class="mx-auto" name="" id="" style="width:100%;">
+    {{#each categories}}
+    <option value="">{{ this.categoryName }}</option>
+    {{/each}}
+  </select>
 
-<a href="./expense/new" class="btn btn-primary">新增支出</a>
+  {{#if totalAmount}}
+  <h3>總金額: {{ this.totalAmount}}</h3>
+  {{/if}}
+
+  <ul class="list-group">
+    {{#each records}}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-auto mr-auto">
+          <i class="{{ this.categoryIcon }}"></i>{{ this.name }}
+          <p>{{ this.date }}</p>
+        </div>
+
+        <div class="col-auto">
+          <p>{{ this.amount }}<a href="./expense/edit" class="btn">修改</a>
+          <a href="" class="btn">刪除</a></p>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+
+
+  <a href="./expense/new" class="btn btn-primary">新增支出</a>
+</div>
