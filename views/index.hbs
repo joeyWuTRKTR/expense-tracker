@@ -22,9 +22,13 @@
           <p>{{ this.date }}</p>
         </div>
 
-        <div class="col-auto">
-          <p>{{ this.amount }}<a href="./expense/{{ this._id }}/edit" class="btn">修改</a>
-          <a href="" class="btn">刪除</a></p>
+        <div class="col-auto ml-auto">
+          <p>{{ this.amount }}
+          <a href="./expense/{{ this._id }}/edit" class="btn">修改</a>
+          <form action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-danger btn-sm" type="submit">delete</button>
+          </form>
+          </p>
         </div>
       </div>
     </li>
