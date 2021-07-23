@@ -2,6 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const routes = require('./routes')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const app = express()
 
 // 設定handlebars樣板引擎
@@ -15,6 +16,8 @@ require('./config/mongoose')
 
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+
 app.use(routes)
 
 // 監聽網站

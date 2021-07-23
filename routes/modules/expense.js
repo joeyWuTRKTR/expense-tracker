@@ -1,6 +1,7 @@
 const express = require('express')
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+const { dateToString } = require('../../public/javascripts/tools')
 const router = express.Router()
 
 // Create - lead to create page
@@ -20,11 +21,30 @@ router.post('/', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.get('/edit', (req, res) => {
-  return Record.find()
+// Edit - lead to edit page
+router.get('/:id/edit', async (req, res) => {
+  const id = req.params.id
+  const categories = await Category.find().lean()
+  return Record.findById(id)
     .lean()
-    .then(expenses => res.render('edit', { expenses }))
+    .then(record => {
+      const currentDate = dateToString(record.date)
+      return res.render('edit', { record, categories, currentDate }) 
+    })
     .catch(err => console.log(err))
 })
+
+// Edit - return changed value to index page
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
+    })
+    .then(res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
 
 module.exports = router
