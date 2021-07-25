@@ -1,9 +1,5 @@
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/"><h1 class="pl-5">家庭記帳本</h1></a>
-</nav>
-<div class="container d-flex flex-column justify-content-center">
-
-  <form action="/filter" class="filter" onchange="submit()">
+<div class="container">
+  <form action="/filter" class="filter-category mt-5 pt-3 mx-auto" onchange="submit()">
     <select class="mx-auto" name="category" id="category" style="width:100%;">
       <option value="{{ this.categoryName }}">所有分類</option>
       {{#each categories}}
@@ -13,32 +9,43 @@
     </select>
   </form>
 
-  {{#if totalAmount}}
-  <h3>總金額: {{ this.totalAmount}}</h3>
+  <!-- display flash message -->
+  {{#if success_messages}}
+  <div class="alert alert-success mt-3" role="alert">
+    {{ success_messages }}
+  </div>
   {{/if}}
 
-  <ul class="list-group record-section">
+  {{#if totalAmount}}
+  <div class="text-center total-amount-section">
+    <h1 class="total-amount mt-3 mb-4">總金額: {{ this.totalAmount}}</h1>
+  </div>
+  {{/if}}
+
+  <ul class="list-group record-section ">
     {{#each records}}
-    <li class="list-group-item record-section-list">
+    <li class="list-group-item record-section-list mt-2 ">
       <div class="row">
-        <div class="col-auto mr-auto record-section-info">
+        <div class="col-auto mr-auto record-section-info align-self-center">
           <i class="{{ this.categoryIcon }}"></i>
           <span class="record-section-name">{{ this.name }}</span>
           <span class="record-section-date">{{ this.date }}</span>
         </div>
 
-        <div class="col-auto ml-auto record-section-detail">
+        <div class="col-auto ml-auto record-section-detail ">
           <span class="record-section-amount">{{ this.amount }}元</span>
-          <a href="./expense/{{ this._id }}/edit" class="btn btn-outline-success record-section-update">修改</a>
-          <form class="record-section-delete" action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-            <button class="btn btn-outline-danger btn-sm" type="submit">delete</button>
+          <a href="./expense/{{ this._id }}/edit" class="btn btn-outline-success record-section-update ml-3">修改</a>
+          <form class="record-section-delete ml-2" action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-outline-danger" type="submit">delete</button>
           </form>
         </div>
+
       </div>
     </li>
     {{/each}}
   </ul>
 
-
-  <a href="./expense/new" class="btn btn-primary">新增支出</a>
+  <div class="list-group create-btn-section mx-auto" style="width: 12rem;">
+    <a href="./expense/new" class="btn btn-primary  create-btn mt-4 mb-4">新增支出</a>
+  </div>
 </div>

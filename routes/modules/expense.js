@@ -17,7 +17,10 @@ router.get('/new', async (req, res) => {
 router.post('/', (req, res) => {
   const { name, category, date, amount } = req.body
   return Record.create({ name, category, date, amount })
-    .then(() => res.redirect('/'))
+    .then(() => {
+      req.flash('success_messages', '已成功建立支出紀錄！')
+      res.redirect('/')
+    })
     .catch(err => console.log(err))
 })
 
