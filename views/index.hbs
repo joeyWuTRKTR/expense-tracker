@@ -3,11 +3,14 @@
 </nav>
 <div class="container d-flex flex-column justify-content-center">
 
-  <select class="mx-auto" name="" id="" style="width:100%;">
-    {{#each categories}}
-    <option value="">{{ this.categoryName }}</option>
-    {{/each}}
-  </select>
+  <form action="/filter" class="filter" onchange="submit()">
+    <select class="mx-auto" name="category" id="category" style="width:100%;">
+      {{#each categories}}
+      {{!-- 選擇的分類和某一分類匹配，顯示選擇的分類 --}}
+      <option value="{{ this.categoryName }}" {{#is this.categoryName ../currentCategory }} selected {{/is}}>{{ this.categoryName }}</option>
+      {{/each}}
+    </select>
+  </form>
 
   {{#if totalAmount}}
   <h3>總金額: {{ this.totalAmount}}</h3>

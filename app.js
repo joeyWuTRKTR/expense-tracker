@@ -1,14 +1,18 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const hbshelpers = require('handlebars-helpers')
 const routes = require('./routes')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+
 const app = express()
+const multihelpers = hbshelpers()
 
 // 設定handlebars樣板引擎
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
-  extname: '.hbs'
+  extname: '.hbs',
+  hbshelpers: multihelpers
 }))
 app.set('view engine', 'hbs')
 

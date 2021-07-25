@@ -24,4 +24,27 @@ router.get('/', async(req, res) => {
     .catch(err => console.log(err))
 })
 
+// 依照分類渲染index頁面
+router.get('/filter', async (req, res) => {
+  const categoryName = req.query.category // 找到回傳的分類
+  const category = await Category.findOne({ categoryName }) // 在資料庫找到該分類的所有資料
+  const categories = await Category.find().lean()
+
+  console.log(category)
+  
+  return Record.find({ category: category.categoryName }).lean()
+    .then(records => {
+      let totalAmount = 0
+      records.map(record => {
+        totalAmount += record.amount
+        record.categoryIcon = category.categoryIcon
+      })
+      res.render('index', { records, totalAmount, categories,
+        currentCategory: category.categoryName })
+    })
+    // .then(res.redirect('/'))
+    .catch()
+  
+})
+
 module.exports = router
