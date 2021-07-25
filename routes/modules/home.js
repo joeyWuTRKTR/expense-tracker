@@ -1,6 +1,7 @@
 const express = require('express')
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+const { dateToString } = require('../../public/javascripts/tools')
 const router = express.Router()
 
 // 使用async/await function非同步處理category和record兩個種子資料
@@ -16,6 +17,7 @@ router.get('/', async(req, res) => {
       let totalAmount = 0
       records.map(record => {
         totalAmount += record.amount
+        record.date = dateToString(record.date)
         // 將category物件的值，傳入record中
         record.categoryIcon = categoryData[record.category]
       })
@@ -30,13 +32,14 @@ router.get('/filter', async (req, res) => {
   const category = await Category.findOne({ categoryName }) // 在資料庫找到該分類的所有資料
   const categories = await Category.find().lean()
 
-  console.log(category)
+  if (!category) return res.redirect('/') // 點選"所有分類"，找不到categoryname所以返回主頁面
   
   return Record.find({ category: category.categoryName }).lean()
     .then(records => {
       let totalAmount = 0
       records.map(record => {
         totalAmount += record.amount
+        record.date = dateToString(record.date)
         record.categoryIcon = category.categoryIcon
       })
       res.render('index', { records, totalAmount, categories,

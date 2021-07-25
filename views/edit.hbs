@@ -1,42 +1,42 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">家庭記帳本</a>
+  <a class="navbar-brand" href="/"><h1 class="pl-5">家庭記帳本</h1></a>
 </nav>
 
-<form action="/expense/{{ record._id }}?_method=PUT" method="POST">
-  <div class="container d-flex flex-column justify-content-center">
-    <div class="form-group row">
-      <p class="col-md-2">*必填欄位</p>
-      <h3 class="col-md-4 text-left">請輸入你的支出</h3>
-    </div>
+<div class="row mt-5">
+  <div class="col-md-4 mx-auto">
+    <div class="card shadow">     
+      <form action="/expense/{{ record._id }}?_method=PUT" method="POST">
+          <h1 class="text-center mt-3">修改支出</h1>
 
-    <div class="form-group row">
-      <label class="col-md-2" for="name">名稱*:</label>
-      <input class="form-control col-md-4 text-left" type="text" id="name" name="name" value="{{ record.name }}" required>
-    </div>
+          <div class="form-group row align-items-center justify-content-center mt-3">
+            <label class="col-md-2" for="name">名稱*:</label>
+            <input class="form-control col-md-4 text-left" type="text" id="name" name="name" value="{{ record.name }}" required>
+          </div>
 
-    <div class="form-group row">
-      <label class="col-md-2" for="date">日期*:</label>
-      <input class="form-control col-md-4 text-left" type="date" id="date" name="date" value="{{ currentDate }}" required>
-    </div>
+          <div class="form-group row align-items-center justify-content-center mt-4">
+            <label class="col-md-2" for="date">日期*:</label>
+            <input class="form-control col-md-4 text-left" type="date" id="date" name="date" value="{{ currentDate }}" required>
+          </div>
 
-    <div class="form-group row">
-      <label class="col-md-2" for="category">類別*:</label>
-      <select class="form-control col-md-4 text-left" name="category" id="category">
-        <option value="{{ record.category }}">{{ record.category }}</option>
-        {{#each categories}}
-        <option value="{{ this.categoryName }}">{{ this.categoryName }}</option>
-        {{/each}}
-      </select>
-    </div>
+          <div class="form-group row align-items-center justify-content-center mt-4">
+            <label class="col-md-2" for="category">類別*:</label>
+            <select class="form-control col-md-4 text-left" name="category" id="category">
+              <option value="{{ record.category }}">{{ record.category }}</option>
+              {{#each categories}}
+              <option value="{{ this.categoryName }}">{{ this.categoryName }}</option>
+              {{/each}}
+            </select>
+          </div>
 
-    <div class="form-group row">
-      <label class="col-md-2" for="amount">金額*:</label>
-      <input class="form-control col-md-4 text-left" type="number" id="amount" name="amount" value="{{ record.amount }}" required>
-    </div>
+          <div class="form-group row align-items-center justify-content-center mt-4">
+            <label class="col-md-2" for="amount">金額*:</label>
+            <input class="form-control col-md-4 text-left" type="number" id="amount" name="amount" value="{{ record.amount }}" required>
+          </div>
 
-    <div class="form-group row">
-      <div class="col-md-2"></div>
-      <button type="submit" class="btn btn-success col-md-4 text-center">新增支出</button>
+          <div class="form-group row justify-content-center mt-3 mb-4">
+            <button type="submit" class="btn btn-success btn-lg col-md-4 text-center">新增支出</button>
+          </div>
+      </form>
     </div>
   </div>
-</form>
+</div>

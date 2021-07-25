@@ -1,10 +1,11 @@
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="/">家庭記帳本</a>
+  <a class="navbar-brand" href="/"><h1 class="pl-5">家庭記帳本</h1></a>
 </nav>
 <div class="container d-flex flex-column justify-content-center">
 
   <form action="/filter" class="filter" onchange="submit()">
     <select class="mx-auto" name="category" id="category" style="width:100%;">
+      <option value="{{ this.categoryName }}">所有分類</option>
       {{#each categories}}
       {{!-- 選擇的分類和某一分類匹配，顯示選擇的分類 --}}
       <option value="{{ this.categoryName }}" {{#is this.categoryName ../currentCategory }} selected {{/is}}>{{ this.categoryName }}</option>
@@ -16,22 +17,22 @@
   <h3>總金額: {{ this.totalAmount}}</h3>
   {{/if}}
 
-  <ul class="list-group">
+  <ul class="list-group record-section">
     {{#each records}}
-    <li class="list-group-item">
+    <li class="list-group-item record-section-list">
       <div class="row">
-        <div class="col-auto mr-auto">
-          <i class="{{ this.categoryIcon }}"></i>{{ this.name }}
-          <p>{{ this.date }}</p>
+        <div class="col-auto mr-auto record-section-info">
+          <i class="{{ this.categoryIcon }}"></i>
+          <span class="record-section-name">{{ this.name }}</span>
+          <span class="record-section-date">{{ this.date }}</span>
         </div>
 
-        <div class="col-auto ml-auto">
-          <p>{{ this.amount }}
-          <a href="./expense/{{ this._id }}/edit" class="btn">修改</a>
-          <form action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-            <button class="btn btn-danger btn-sm" type="submit">delete</button>
+        <div class="col-auto ml-auto record-section-detail">
+          <span class="record-section-amount">{{ this.amount }}元</span>
+          <a href="./expense/{{ this._id }}/edit" class="btn btn-outline-success record-section-update">修改</a>
+          <form class="record-section-delete" action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+            <button class="btn btn-outline-danger btn-sm" type="submit">delete</button>
           </form>
-          </p>
         </div>
       </div>
     </li>
