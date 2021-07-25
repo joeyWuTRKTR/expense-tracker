@@ -6,6 +6,7 @@ const flash = require('connect-flash')
 const routes = require('./routes')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const PORT = process.env.PORT || 3000
 
 const app = express()
 const multihelpers = hbshelpers()
@@ -42,4 +43,4 @@ app.use((req, res, next) => {
 app.use(routes)
 
 // 監聽網站
-app.listen(3000, () => console.log('Web app is connected on port 3000'))
+app.listen(PORT, () => console.log(`Web app is connected on http://localhost:${PORT}`))
