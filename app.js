@@ -33,6 +33,8 @@ app.use(session({
   saveUninitialized: true
 }))
 
+const usePassport = require('./config/passport')
+
 // flash
 app.use(flash())
 app.use((req, res, next) => {
@@ -40,6 +42,8 @@ app.use((req, res, next) => {
   res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
+
+usePassport(app)
 
 app.use(routes)
 
