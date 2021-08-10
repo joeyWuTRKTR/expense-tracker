@@ -6,12 +6,13 @@ const router = express.Router()
 
 // 使用async/await function非同步處理category和record兩個種子資料
 router.get('/', async(req, res) => {
+  const userId = req.user._id
   const categories = await Category.find().lean()
   // 把分類和icon額外拉到物件裡
   const categoryData = {}
   categories.forEach(category => categoryData[category.categoryName] = category.categoryIcon)
 
-  return Record.find({ isDelete: false })
+  return Record.find({ isDelete: false, userId })
     .lean()
     .then(records => {
       let totalAmount = 0
