@@ -34,8 +34,8 @@
 
         <div class="col-auto ml-auto record-section-detail ">
           <span class="record-section-amount">{{ this.amount }}元</span>
-          <a href="./expense/{{ this._id }}/edit" class="btn btn-outline-success record-section-update ml-3">修改</a>
-          <form class="record-section-delete ml-2" action="/expense/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+          <a href="./expenses/{{ this._id }}/edit" class="btn btn-outline-success record-section-update ml-3">修改</a>
+          <form class="record-section-delete ml-2" action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
             <button class="btn btn-outline-danger" type="submit">delete</button>
           </form>
         </div>
@@ -46,6 +46,6 @@
   </ul>
 
   <div class="list-group create-btn-section mx-auto" style="width: 12rem;">
-    <a href="./expense/new" class="btn btn-primary  create-btn mt-4 mb-4">新增支出</a>
+    <a href="./expenses/new" class="btn btn-primary  create-btn mt-4 mb-4">新增支出</a>
   </div>
 </div>
