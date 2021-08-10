@@ -12,9 +12,23 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
-  User.create({ name, email, password })
-    .then(() => res.redirect('/users/login'))
-    .catch(err => console.log(err))
+  const errors = []
+
+  if ( !name || !email || !password || !confirmPassword ) {
+    errors.push({ message: '請填入所有欄位!' })
+  }
+
+  if ( password !== confirmPassword ) {
+    errors.push({ message: '密碼和驗證密碼不正確!'})
+  }
+
+  if (errors.length) {
+    return res.render('register', { errors, name, email, password, confirmPassword })
+  } else {
+    User.create({ name, email, password })
+      .then(() => res.redirect('/users/login'))
+      .catch(err => console.log(err))
+  }
 })
 
 module.exports = router

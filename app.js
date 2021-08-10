@@ -36,7 +36,8 @@ app.use(session({
 // flash
 app.use(flash())
 app.use((req, res, next) => {
-  res.locals.success_messages = req.flash('success_messages')
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
