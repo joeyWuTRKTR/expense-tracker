@@ -14,10 +14,13 @@ module.exports = app => {
         if (!user) {
           return done(null, false, { message: 'User email is not registed!' })
         }
-        if (user.password !== password) {
-          return done(null, false, { message: 'Password incorrect!' })
-        }
-        return done(null, user)
+        return bcrypt.compare(password, user.password).then(isMatch => {
+          if (!isMatch) {
+            return done(null, false, { message: 'Password doesn\'t match confirn password!' })
+          } 
+          return done(null, user)
+        })
+        
       })
       .catch(err => done(err, null))
   }))

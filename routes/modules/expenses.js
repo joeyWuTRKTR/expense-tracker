@@ -16,8 +16,8 @@ router.get('/new', async (req, res) => {
 // Create - lead to index page
 router.post('/', (req, res) => {
   const userId = req.user._id
-  const { name, category, date, amount } = req.body
-  return Record.create({ userId, name, category, date, amount })
+  const { name, category, date, amount, merchant } = req.body
+  return Record.create({ userId, name, category, date, amount, merchant })
     .then(() => {
       req.flash('success_messages', '已成功建立支出紀錄！')
       res.redirect('/')
@@ -34,7 +34,7 @@ router.get('/:id/edit', async (req, res) => {
     .lean()
     .then(record => {
       const currentDate = dateToString(record.date)
-      return res.render('edit', { record, categories, currentDate }) 
+      return res.render('edit', { record, categories, currentDate })
     })
     .catch(err => console.log(err))
 })
