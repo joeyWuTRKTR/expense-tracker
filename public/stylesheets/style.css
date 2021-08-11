@@ -2,15 +2,10 @@ body {
   background-color: azure;
 }
 
-/* header section */
-.filter-category {
-  width: 50%;
-}
-
 .total-amount, .record-section-amount{
   font-weight: 700;
 }
 
-.record-section-info, .filter-category, .record-section-amount, .create-btn {
+.record-section-info, .filter-category, .filter-month, .record-section-amount, .create-btn {
   font-size: 1.5rem;
 }

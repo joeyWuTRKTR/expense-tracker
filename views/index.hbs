@@ -1,20 +1,29 @@
 <div class="container">
-  <form action="/filter" class="filter-category mt-5 pt-3 mx-auto" onchange="submit()">
-    <select class="mx-auto" name="category" id="category" style="width:100%;">
-      <option value="{{ this.categoryName }}">所有分類</option>
-      {{#each categories}}
-      {{!-- 選擇的分類和某一分類匹配，顯示選擇的分類 --}}
-      <option value="{{ this.categoryName }}" {{#is this.categoryName ../currentCategory }} selected {{/is}}>{{ this.categoryName }}</option>
-      {{/each}}
-    </select>
-  </form>
-
-  <!-- display flash message -->
-  {{#if success_messages}}
-  <div class="alert alert-success mt-3" role="alert">
-    {{ success_messages }}
+  <div class="row">
+    <div class="col-6">
+      <form action="/monthFilter" class="filter-month mt-5 pt-3 mx-auto" onchange="submit()">
+        <select class="mx-auto" name="month" id="month" style="width:100%;">
+          <option value="{{ this.month }}">所有月份</option>
+          {{#each months}}
+          {{!-- 選擇的分類和某一分類匹配，顯示選擇的分類 --}}
+          <option value="{{ this.month }}" {{#is this.month ../currentMonth }} selected {{/is}}>{{
+            this.categoryName }}</option>
+          {{/each}}
+        </select>
+      </form>
+    </div>
+    <div class="col-6">
+      <form action="/filter" class="filter-category mt-5 pt-3 mx-auto" onchange="submit()">
+        <select class="mx-auto" name="category" id="category" style="width:100%;">
+          <option value="{{ this.categoryName }}">所有分類</option>
+          {{#each categories}}
+          {{!-- 選擇的分類和某一分類匹配，顯示選擇的分類 --}}
+          <option value="{{ this.categoryName }}" {{#is this.categoryName ../currentCategory }} selected {{/is}}>{{ this.categoryName }}</option>
+          {{/each}}
+        </select>
+      </form>
+    </div>
   </div>
-  {{/if}}
 
   {{#if totalAmount}}
   <div class="text-center total-amount-section">

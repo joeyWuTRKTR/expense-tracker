@@ -48,7 +48,6 @@ router.get('/filter', async (req, res) => {
     })
     // .then(res.redirect('/'))
     .catch()
-  
 })
 
 module.exports = router
