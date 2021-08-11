@@ -6,8 +6,12 @@ const flash = require('connect-flash')
 const routes = require('./routes')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const PORT = process.env.PORT || 3000
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+const PORT = process.env.PORT
 const app = express()
 const multihelpers = hbshelpers()
 
@@ -28,7 +32,7 @@ app.use(express.static('public'))
 
 // session
 app.use(session({
-  secret: 'expenseTracker',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
