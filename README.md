@@ -25,6 +25,7 @@
 * 密碼: root2
 
 ## Installation - 專案安裝
+    code (4 spaces indent)
 1. 在終端機輸入指令clone專案到本機電腦  
 `<addr>` git clone https://github.com/joeyWuTRKTR/expense-tracker.git
 2. 進入專案目錄  
