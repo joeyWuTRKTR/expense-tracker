@@ -27,36 +27,14 @@ router.get('/', async(req, res) => {
     .catch(err => console.log(err))
 })
 
-// 類別分類
-// router.get('/filter', async (req, res) => {
-//   const categoryName = req.query.category // 找到回傳的分類
-//   const category = await Category.findOne({ categoryName }) // 在資料庫找到該分類的所有資料
-//   const categories = await Category.find().lean()
-
-//   if (!category) return res.redirect('/') // 點選"所有分類"，找不到categoryname所以返回主頁面
-  
-//   return Record.find({ category: category.categoryName }).lean()
-//     .then(records => {
-//       let totalAmount = 0
-//       records.map(record => {
-//         totalAmount += record.amount
-//         record.date = dateToString(record.date)
-//         record.categoryIcon = category.categoryIcon
-//       })
-//       res.render('index', { records, totalAmount, categories,
-//         currentCategory: category.categoryName })
-//     })
-//     // .then(res.redirect('/'))
-//     .catch()
-// })
-
+// 複合式搜尋
 router.get('/filter', async (req, res) => {
   const userId = req.user._id
   const categoryFiltered = req.query.category
   const monthFiltered = Number(req.query.month)
   const categories = await Category.find().lean()
 
-  // create mongoose aggregate filter query
+  // 將使用者id作為基本資料，依照選單選擇把使用者想要的資料塞入
   const filterQuery = {
     userId: userId,
     isDelete: false
@@ -64,6 +42,7 @@ router.get('/filter', async (req, res) => {
   categoryFiltered ? filterQuery.category = categoryFiltered : ''
   monthFiltered? filterQuery.month = monthFiltered : ''
 
+  // 複合式篩選資料
   Record.aggregate([
     // 拉出需要的欄位
     { $project: { name: 1, category: 1, date: 1, amount: 1, merchant: 1, userId: 1, isDelete: 1, month: { $month: '$date' } } },
