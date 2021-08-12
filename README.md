@@ -19,7 +19,8 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
 ## 測試帳號 Testing-Account
 測試帳號一: 
 * 信箱: root1@example.com
-* 密碼: root1  
+* 密碼: root1
+
 測試帳號二: 
 * 信箱: root2@example.com
 * 密碼: root2
