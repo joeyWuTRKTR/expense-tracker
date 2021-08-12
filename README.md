@@ -1,5 +1,6 @@
 # 老爸的私房錢專案
 練習Node.js環境中Express框架練習
+
 heroku: https://quiet-meadow-02693.herokuapp.com/
 
 ## 功能說明 Features
@@ -35,12 +36,15 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
   3. 安裝相關套件  
 
     npm install
-  4. 載入種子資料  
+  4. 輸入code. 進入VS code
+
+    修改.evn.example檔案，將名稱改為.env、修改facebook-develope設定為自己的密鑰
+  5. 載入種子資料  
 
     npm run seed
-  5. 啟動專案  
+  6. 啟動專案  
 
     npm run dev
-  6. 終端機出現以下訊息後，即可在 http://localhost:3000 使用  
+  7. 終端機出現以下訊息後，即可在 http://localhost:3000 使用  
 
     Web app is connected on http://localhost:3000
