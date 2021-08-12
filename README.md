@@ -38,7 +38,7 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
     npm install
   4. 輸入code. 進入VS code
 
-    修改.evn.example檔案，將名稱改為.env、修改facebook-develope設定為自己的密鑰
+    修改.evn.example檔案，將名稱改為.env、設定facebook-develope密鑰
   5. 載入種子資料  
 
     npm run seed
