@@ -2,7 +2,7 @@
 練習Node.js環境中Express框架練習
 
 heroku: https://quiet-meadow-02693.herokuapp.com/
-![image](picture or gif url)
+![image](https://github.com/joeyWuTRKTR/expense-tracker/blob/main/expense-tracker-index.png)
 ## 功能說明 Features
 * 使用者可以在首頁看支出的所有項目，如:支出項目、時間、金額
 * 使用者可以新增、修改、刪除支出資訊
