@@ -8,8 +8,8 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
 * 使用者可以新增、修改、刪除支出資訊
 * 使用者可以選擇分類，查看該分類的所有支出
 * 使用者可以查看總花費及各分類所支出的金額
-* 使用者可以註冊、登入(也可以Facebook登入)
-![image](picture or gif url)
+* 使用者可以註冊、登入(支援Facebook登入)
+![image](https://github.com/joeyWuTRKTR/expense-tracker/blob/main/expense-tracker-login%26register.png)
 
 ## 環境建置 Environment
 * 開發環境: VS Code ^1.59.0
