@@ -17,12 +17,12 @@
 * 實用套件: Nodemon ^2.0.7
 
 ## Test Account - 測試帳號
-1. 測試帳號一: 
-信箱: root1@example.com
-密碼: root1
-2. 測試帳號二: 
-信箱: root2@example.com
-密碼: root2
+測試帳號一: 
+* 信箱: root1@example.com
+* 密碼: root1
+測試帳號二: 
+* 信箱: root2@example.com
+* 密碼: root2
 
 ## Installation - 專案安裝
 1. 在終端機輸入指令clone專案到本機電腦  
