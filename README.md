@@ -1,5 +1,6 @@
 # 老爸的私房錢專案
 練習Node.js環境中Express框架練習
+heroku: https://quiet-meadow-02693.herokuapp.com/
 
 ## 功能說明 Features
 * 使用者可以在首頁看支出的所有項目，如:支出項目、時間、金額
@@ -39,6 +40,6 @@
   5. 啟動專案  
 
     npm run dev
-  6. 終端機出現以下訊息後，即可在http://localhost:3000使用  
+  6. 終端機出現以下訊息後，即可在 http://localhost:3000 使用  
 
     Web app is connected on http://localhost:3000
