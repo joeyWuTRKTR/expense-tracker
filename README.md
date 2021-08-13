@@ -1,13 +1,15 @@
 # 老爸的私房錢專案
 練習Node.js環境中Express框架練習
-heroku: https://quiet-meadow-02693.herokuapp.com/
 
+heroku: https://quiet-meadow-02693.herokuapp.com/
+![image](https://github.com/joeyWuTRKTR/expense-tracker/blob/main/expense-tracker-index.png)
 ## 功能說明 Features
 * 使用者可以在首頁看支出的所有項目，如:支出項目、時間、金額
 * 使用者可以新增、修改、刪除支出資訊
 * 使用者可以選擇分類，查看該分類的所有支出
 * 使用者可以查看總花費及各分類所支出的金額
-* 使用者可以註冊、登入(也可以Facebook登入)
+* 使用者可以註冊、登入(支援Facebook登入)
+![image](https://github.com/joeyWuTRKTR/expense-tracker/blob/main/expense-tracker-login%26register.png)
 
 ## 環境建置 Environment
 * 開發環境: VS Code ^1.59.0
@@ -20,6 +22,7 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
 測試帳號一: 
 * 信箱: root1@example.com
 * 密碼: root1
+
 測試帳號二: 
 * 信箱: root2@example.com
 * 密碼: root2
@@ -34,12 +37,15 @@ heroku: https://quiet-meadow-02693.herokuapp.com/
   3. 安裝相關套件  
 
     npm install
-  4. 載入種子資料  
+  4. 輸入code. 進入VS code
+
+    修改.evn.example檔案，將名稱改為.env、設定facebook-develope密鑰
+  5. 載入種子資料  
 
     npm run seed
-  5. 啟動專案  
+  6. 啟動專案  
 
     npm run dev
-  6. 終端機出現以下訊息後，即可在 http://localhost:3000 使用  
+  7. 終端機出現以下訊息後，即可在 http://localhost:3000 使用  
 
     Web app is connected on http://localhost:3000
