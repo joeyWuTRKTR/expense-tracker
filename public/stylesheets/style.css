@@ -6,6 +6,6 @@ body {
   font-weight: 700;
 }
 
-.record-section-info, #category, #record-month, .record-section-amount, .create-btn {
+.record-section-info, #category, #yearMonth, .record-section-amount, .create-btn {
   font-size: 1.5rem;
 }
