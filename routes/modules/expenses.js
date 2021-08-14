@@ -65,8 +65,8 @@ router.delete('/:id', async (req, res) => {
   try {
     const userId = req.user._id
     const _id = req.params.id
-    const record = await Record.findOne({ _id, userId })
-    record.remove()
+    const record = await Record.findOneAndRemove({ _id, userId })
+    // record.remove()
     return res.redirect('/')
   }
   catch (err) {
