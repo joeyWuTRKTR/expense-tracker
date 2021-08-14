@@ -73,20 +73,6 @@ router.get('/filter', async (req, res) => {
     record.categoryIcon = categoryData[record.category] // 用category資料在record裡新增fontawesome icon
   })
   return res.render('index', { records, totalAmount, categories, categoryFiltered, inputMonth })
-    // .then(async (records) => {
-    //   // 加入分類圖案
-    //   const categoryData = {}
-    //   categories.forEach(category => categoryData[category.categoryName] = category.categoryIcon)
-
-    //   // 計算總金額 & 回傳資料
-    //   let totalAmount = 0
-    //   records.forEach(record => {
-    //     record.date = convertDate(record.date)
-    //     totalAmount += record.amount
-    //     record.categoryIcon = categoryData[record.category] // 用category資料在record裡新增fontawesome icon
-    //   })
-    //   return res.render('index', { records, totalAmount, categories, categoryFiltered, inputMonth})
-    // })
 })
 
 module.exports = router
