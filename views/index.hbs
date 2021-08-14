@@ -30,30 +30,49 @@
     <h1 class="total-amount mt-3 mb-4">總金額: {{ this.totalAmount}}</h1>
   </div>
   {{/if}}
-  <div class="mx-auto" style="max-width: 800px;">
-    <ul class="list-group record-section">
-      {{#each records}}
-      <li class="list-group-item record-section-list mt-2" style="border: 2px solid black">
-        <div class="row">
-          <div class="col-auto mr-auto record-section-info align-self-center">
-            <i class="{{ this.categoryIcon }}"></i>
-            <span class="record-section-name">{{ this.name }}</span>
-            <span class="record-section-date">{{ this.date }}</span>
-            <span class="record-section-merchant">{{ this.merchant }}</span>
-          </div>
 
-          <div class="col-auto ml-auto record-section-detail ">
-            <span class="record-section-amount">{{ this.amount }}元</span>
-            <a href="./expenses/{{ this._id }}/edit" class="btn btn-outline-success record-section-update ml-3">修改</a>
-            <form class="record-section-delete ml-2" action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
-              <button class="btn btn-outline-danger" type="submit">delete</button>
-            </form>
-          </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-auto">
+      <table class="table table-striped mx-auto mt-3" id="expenses-list" style="width: 1000px;">
+        <tbody>
+          {{#unless records}}
+          <tr class="text-center">
+            <th><h3>No Expense Record</h3></th>
+          </tr>
+          {{/unless}}
 
-        </div>
-      </li>
-      {{/each}}
-    </ul>
+          {{#each records}}
+          <tr>
+            <th class="table-category align-middle">
+              <i class="{{ this.categoryIcon }} fa-2x"></i>
+            </th>
+            <th>
+              <h3>{{this.name}}</h5>
+              <h5>{{this.date}}</h5>
+            </th>
+            <th class="table-merchant align-middle">
+              <div class="d-flex">
+                <i class="fas fa-store fa-2x" style="color:rgb(106, 161, 245)"></i>
+                <h5 class="px-3 my-auto" style="font-weight: bold;">{{this.merchant}}</h5>
+              </div>
+            </th>
+            <th class="table-price align-middle">
+              <h3>${{this.amount}}</h3>
+            </th>
+            <th class="table-buttons align-middle">
+              <a href="./expenses/{{ this._id }}/edit" class="btn btn-success record-section-update">修改</a>
+            </th>
+            <th class="table-buttons align-middle">
+              <form class="record-section-delete ml-2" action="/expenses/{{this._id}}?_method=DELETE" method="POST"
+                style="display: inline;">
+                <button class="btn btn-danger" type="submit">刪除</button>
+              </form>
+            </th>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="list-group create-btn-section mx-auto" style="width: 12rem;">
