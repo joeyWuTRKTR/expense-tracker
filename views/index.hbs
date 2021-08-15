@@ -68,10 +68,7 @@
               <a href="./expenses/{{ this._id }}/edit" class="btn btn-success record-section-update">修改</a>
             </th>
             <th class="table-buttons align-middle">
-              <form class="record-section-delete ml-2" action="/expenses/{{this._id}}?_method=DELETE" method="POST"
-                style="display: inline;">
-                <button class="btn btn-danger" type="submit"  data-toggle="modal" data-target="#delete{{this._id}}">刪除</button>
-              </form>
+              <button class="btn btn-danger" type="submit"  data-toggle="modal" data-target="#delete{{this._id}}">刪除</button>
             </th>
           </tr>
 
@@ -89,7 +86,7 @@
                   您確定要刪除 {{ this.name }} 這個支出記錄嗎嗎？
                 </div>
                 <div class="modal-footer">
-                  <form action="./record/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+                  <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
                     <button class="btn btn-dark m-1" type="submit" data-toggle="modal"
                       data-target="#delete{{ this._id }}">是</button>
                   </form>
