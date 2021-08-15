@@ -27,9 +27,14 @@
 
   {{#if totalAmount}}
   <div class="text-center total-amount-section">
-    <h1 class="total-amount mt-3 mb-4">總金額: {{ this.totalAmount}}</h1>
+    <h1 class="total-amount mt-3 mb-4" >總金額: {{ this.totalAmount}}</h1>
   </div>
   {{/if}}
+
+  <div class="d-flex justify-content-center">
+    <canvas class="mx-4" id="myChart"></canvas>
+  </div>
+
 
   <div class="row d-flex justify-content-center">
     <div class="col-auto">
@@ -57,7 +62,7 @@
               </div>
             </th>
             <th class="table-price align-middle">
-              <h3>${{this.amount}}</h3>
+              <h3 data-category="{{this.category}}">{{this.amount}}</h3>
             </th>
             <th class="table-buttons align-middle">
               <a href="./expenses/{{ this._id }}/edit" class="btn btn-success record-section-update">修改</a>
@@ -102,3 +107,35 @@
     <a href="./expenses/new" class="btn btn-primary  create-btn mt-4 mb-4">新增支出</a>
   </div>
 </div>
+
+<script>
+  let foodAmount = 0
+  let homeAmount = 0
+  let trafficAmount = 0
+  let funAmount = 0
+  let elseAmount = 0
+  const ctx = document.getElementById('myChart')
+  document.querySelectorAll('[data-category="家居物業"]').forEach(e => homeAmount += Number(e.textContent))
+  document.querySelectorAll('[data-category="交通出行"]').forEach(e => trafficAmount += Number(e.textContent))
+  document.querySelectorAll('[data-category="休閒娛樂"]').forEach(e => funAmount += Number(e.textContent))
+  document.querySelectorAll('[data-category="餐飲食品"]').forEach(e => foodAmount += Number(e.textContent))
+  document.querySelectorAll('[data-category="其他"]').forEach(e => elseAmount += Number(e.textContent))
+  const myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["家居物業", "交通出行", "休閒娛樂", "餐飲食品", "其他"],
+      datasets: [{
+        label: '# of Votes',
+        data: [homeAmount, trafficAmount, funAmount, foodAmount, elseAmount],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)',
+          'rgb(84, 255, 159)',
+          'rgb(224, 102, 255)'
+        ],
+        borderWidth: 1
+      }]
+    }
+  })
+</script>

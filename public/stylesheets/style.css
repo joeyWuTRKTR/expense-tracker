@@ -9,3 +9,8 @@ body {
 .record-section-info, #category, #yearMonth, .record-section-amount, .create-btn {
   font-size: 1.5rem;
 }
+
+#myChart {
+  max-width: 800px;
+  max-height: 400px;
+}
